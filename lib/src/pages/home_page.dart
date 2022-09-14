@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grid_pluto/src/models/persona_model.dart';
 import 'package:grid_pluto/src/utils/lista_personas_utils.dart';
 
 import 'package:pluto_grid/pluto_grid.dart';
@@ -81,28 +82,35 @@ class _HomePageState extends State<HomePage> {
   /// [PlutoGridStateManager] tiene muchos métodos y propiedades para manipular dinámicamente la cuadrícula.
   /// Puede manipular la cuadrícula dinámicamente en tiempo de ejecución pasándola a través de la devolución de llamada [onLoaded].
   late final PlutoGridStateManager stateManager;
+  PersonaModel persona = const PersonaModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(15),
-        child: PlutoGrid(
-          columns: columns,
-          rows: rows,
-          columnGroups: columnGroups,
-          onLoaded: (PlutoGridOnLoadedEvent event) {
-            stateManager = event.stateManager;
-          },
-          onChanged: (PlutoGridOnChangedEvent event) {
-            //aca puedo acceder al valor de la primer columna de la fila
-            print(rows[event.rowIdx!].cells.entries.first.value.value);
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(15),
+            height: 490,
+            width: 1200,
+            child: PlutoGrid(
+              columns: columns,
+              rows: rows,
+              columnGroups: columnGroups,
+              onLoaded: (PlutoGridOnLoadedEvent event) {
+                stateManager = event.stateManager;
+              },
+              onChanged: (PlutoGridOnChangedEvent event) {
+                //aca puedo acceder al valor de la primer columna de la fila
+                print(rows[event.rowIdx!].cells.entries.first.value.value);
 
-            //valor que se le pasa a la celda
-            print(event.value);
-          },
-          configuration: const PlutoGridConfiguration(),
-        ),
+                //valor que se le pasa a la celda
+                print(event.value);
+              },
+              configuration: const PlutoGridConfiguration(),
+            ),
+          ),
+        ],
       ),
     );
   }
