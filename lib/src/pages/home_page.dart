@@ -13,12 +13,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<PlutoColumn> columns = <PlutoColumn>[
-    PlutoColumn(
-      title: 'Id Usuario',
-      field: 'id',
-      //Se asigna el tipo de input que sera .text()
-      type: PlutoColumnType.text(),
-    ),
+    // PlutoColumn(
+    //   title: 'Id Usuario',
+    //   field: 'id',
+    //   //Se asigna el tipo de input que sera .text()
+    //   type: PlutoColumnType.text(),
+    // ),
     PlutoColumn(
       title: 'Nombre',
       field: 'nombre',
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     ...ListaPersonasUtils.listaPersonas.map(
       (e) => PlutoRow(
         cells: {
-          'id': PlutoCell(value: e.id),
+          'id': PlutoCell(value: e.id), //Se agrega la celda 'fantasma' aunque no se muestre para tener acceso al id
           'nombre': PlutoCell(value: e.nombre),
           'edad': PlutoCell(value: e.edad),
           'rol': PlutoCell(value: e.rol),
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
 
   /// columnGroups se pueden agrupar columnas se pueden omitir..
   final List<PlutoColumnGroup> columnGroups = [
-    PlutoColumnGroup(title: 'Id', fields: ['id'], expandedColumn: true),
+    // PlutoColumnGroup(title: 'Id', fields: ['id'], expandedColumn: true),
     PlutoColumnGroup(title: 'Informacion Usuario', fields: ['nombre', 'edad']),
     PlutoColumnGroup(title: 'Estatus', children: [
       PlutoColumnGroup(title: 'A', fields: ['rol'], expandedColumn: true),
@@ -94,14 +94,19 @@ class _HomePageState extends State<HomePage> {
             height: 490,
             width: 1200,
             child: PlutoGrid(
+              onSelected: (event) {
+                //TODO: ontap sobre la fila se accede al valor de la celda 'fantasma'
+                print(event.row!.cells['id']!.value);
+              },
               columns: columns,
               rows: rows,
               columnGroups: columnGroups,
               onLoaded: (PlutoGridOnLoadedEvent event) {
+                //TODO: accion que se realiza cuando se esta cargando la tabla       
                 stateManager = event.stateManager;
               },
               onChanged: (PlutoGridOnChangedEvent event) {
-                //aca puedo acceder al valor de la primer columna de la fila
+                //TODO: accion que se realiza cuando se cambia el valor de una celda  
                 print(rows[event.rowIdx!].cells.entries.first.value.value);
 
                 //valor que se le pasa a la celda
