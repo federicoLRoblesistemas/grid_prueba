@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
     PlutoColumn(
       title: 'Id Usuario',
       field: 'id',
+      //Se asigna el tipo de input que sera .text()
       type: PlutoColumnType.text(),
     ),
     PlutoColumn(
@@ -25,11 +26,13 @@ class _HomePageState extends State<HomePage> {
     PlutoColumn(
       title: 'Edad',
       field: 'edad',
+      //Se asigna el tipo de input que sera .number()
       type: PlutoColumnType.number(),
     ),
     PlutoColumn(
       title: 'Rol',
       field: 'rol',
+      //Se asigna el tipo de input que sera .select()
       type: PlutoColumnType.select(<String>[
         'Programador',
         'Diseñador',
@@ -39,11 +42,13 @@ class _HomePageState extends State<HomePage> {
     PlutoColumn(
       title: 'Inicio',
       field: 'inicio',
+      //Se asigna el tipo de input que sera .date()
       type: PlutoColumnType.date(),
     ),
     PlutoColumn(
       title: 'Horario',
       field: 'hora',
+      //Se asigna el tipo de input que sera .time()
       type: PlutoColumnType.time(),
     ),
   ];

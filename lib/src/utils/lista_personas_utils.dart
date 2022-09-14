@@ -3,7 +3,7 @@ import 'package:grid_pluto/src/models/persona_model.dart';
 class ListaPersonasUtils{
 
   static final  List<PersonaModel> listaPersonas = [
-    PersonaModel(
+    const PersonaModel(
       id: 'abc123',
       nombre: 'Fernando',
       edad: '34555555',
@@ -11,7 +11,7 @@ class ListaPersonasUtils{
       hora: '12:30',
       rol: 'Programador'
     ),
-    PersonaModel(
+    const PersonaModel(
       id: 'bca365',
       nombre: 'Gabriel',
       edad: '34444333',
@@ -19,7 +19,7 @@ class ListaPersonasUtils{
       hora: '11:30',
       rol: 'Diseñador'
     ),
-    PersonaModel(
+    const PersonaModel(
       id: 'hgf456',
       nombre: 'Claudia',
       edad: '33654987',
@@ -27,7 +27,7 @@ class ListaPersonasUtils{
       hora: '05:30',
       rol: 'Dueño'
     ),
-    PersonaModel(
+    const PersonaModel(
       id: 'erw887',
       nombre: 'Ricardo',
       edad: '28222555',
@@ -35,7 +35,7 @@ class ListaPersonasUtils{
       hora: '01:22',
       rol: 'Programador'
     ),
-    PersonaModel(
+    const PersonaModel(
       id: 'xcb258',
       nombre: 'Romina',
       edad: '31258963',
